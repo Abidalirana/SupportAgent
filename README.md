@@ -60,7 +60,7 @@ Fields: id, customer_id, question, answer, category
 A Conversation contains many ChatHistory messages.
 
 A Ticket is created from a user’s support question, with a stored answer.
-
+====================================
 🔹 Dummy Data
 
 We preload dummy_data.py with test cases like:
@@ -74,7 +74,7 @@ Answers → “Yes, we offer 20% student discount.”
 Categories → “Billing”, “Technical”, “General”
 
 👉 This helps test the agent tools before plugging in real DB queries.
-
+================================
 🔹 FastAPI Endpoints
 
 Defined in api.py:
@@ -90,7 +90,7 @@ POST /chat/ → Save user/assistant messages in history
 👉 Run with:
 
 uvicorn api:app --reload
-
+===========================
 🔹 Learning Goals for Team
 
 ✅ Practice database modeling with SQLAlchemy

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 
 @dataclass
 class DummyTicket:
@@ -11,8 +11,7 @@ class DummyTicket:
     category: str
     status: str   # confirmed, pending, resolved
 
-
-# 10 dummy tickets for testing
+# ----------------- Dummy Tickets -----------------
 dummy_tickets: List[DummyTicket] = [
     DummyTicket(1, "Ali Khan", 101, "How to reset my password?", "Go to settings > Reset Password.", "account", "resolved"),
     DummyTicket(2, "Sara Ahmed", 102, "What is your refund policy?", "Refunds available within 30 days.", "billing", "confirmed"),
@@ -26,7 +25,7 @@ dummy_tickets: List[DummyTicket] = [
     DummyTicket(10, "Maryam Javed", 110, "Can I recover deleted files?", "Sorry, deleted files cannot be recovered.", "general", "confirmed"),
 ]
 
-# ----------------- Helper functions -----------------
+# ----------------- Helper Functions -----------------
 def get_tickets_by_status(status: str) -> List[DummyTicket]:
     return [t for t in dummy_tickets if t.status.lower() == status.lower()]
 
@@ -36,10 +35,7 @@ def get_tickets_by_customer(customer_name: str) -> List[DummyTicket]:
 def get_ticket_by_customer_id(customer_id: int) -> List[DummyTicket]:
     return [t for t in dummy_tickets if t.customer_id == customer_id]
 
-def get_ticket_by_ticket_id(ticket_id: int) -> List[DummyTicket]:
-    return [t for t in dummy_tickets if t.id == ticket_id]
-def get_ticket_by_id(ticket_id: int) -> DummyTicket | None:
-    """Return a single ticket by ID."""
+def get_ticket_by_ticket_id(ticket_id: int) -> Optional[DummyTicket]:
     for t in dummy_tickets:
         if t.id == ticket_id:
             return t
