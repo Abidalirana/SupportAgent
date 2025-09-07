@@ -26,11 +26,21 @@ dummy_tickets: List[DummyTicket] = [
     DummyTicket(10, "Maryam Javed", 110, "Can I recover deleted files?", "Sorry, deleted files cannot be recovered.", "general", "confirmed"),
 ]
 
-# Helper functions for filtered data
+# ----------------- Helper functions -----------------
 def get_tickets_by_status(status: str) -> List[DummyTicket]:
-    """Return tickets filtered by status (confirmed, pending, resolved)."""
     return [t for t in dummy_tickets if t.status.lower() == status.lower()]
 
 def get_tickets_by_customer(customer_name: str) -> List[DummyTicket]:
-    """Return tickets for a specific customer by name."""
     return [t for t in dummy_tickets if t.customer_name.lower() == customer_name.lower()]
+
+def get_ticket_by_customer_id(customer_id: int) -> List[DummyTicket]:
+    return [t for t in dummy_tickets if t.customer_id == customer_id]
+
+def get_ticket_by_ticket_id(ticket_id: int) -> List[DummyTicket]:
+    return [t for t in dummy_tickets if t.id == ticket_id]
+def get_ticket_by_id(ticket_id: int) -> DummyTicket | None:
+    """Return a single ticket by ID."""
+    for t in dummy_tickets:
+        if t.id == ticket_id:
+            return t
+    return None
